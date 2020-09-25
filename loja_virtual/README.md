@@ -1,4 +1,4 @@
-# loja_virtual
+# Loja virtual
 
 A new Flutter project.
 
