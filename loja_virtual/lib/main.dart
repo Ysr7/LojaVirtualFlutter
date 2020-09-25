@@ -1,7 +1,20 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
   runApp(MyApp());
+
+ 
+  Firestore.instance
+      .collection("pedidos")
+      .document("#00001")
+      .setData({"preco": 199.99, "usuario": "daniel"});
+
+  
+  DocumentSnapshot documento =
+      await Firestore.instance.collection("pedidos").document("#00001").get();
+
+  print(documento.data["nome"]);
 }
 
 class MyApp extends StatelessWidget {
