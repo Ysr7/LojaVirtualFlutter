@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:loja_virtual/helpers/validators.dart';
+import 'package:loja_virtual/models/user.dart';
+import 'package:loja_virtual/models/user_manager.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController senhaController = TextEditingController();
@@ -10,6 +14,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(
         title: const Text("Entrar"),
         centerTitle: true,
@@ -65,8 +70,19 @@ class LoginScreen extends StatelessWidget {
                   child: RaisedButton(
                     onPressed: () {
                       if (formKey.currentState.validate()) {
-                        emailController.text;
-                        senhaController.text;
+                        context.read<UserManager>().singIn(
+                            user: User(
+                                email: emailController.text,
+                                senha: senhaController.text),
+                            onFail: (e) {
+                              scaffoldKey.currentState.showSnackBar(
+                                  SnackBar(content: Text("Falha ao entrar: $e"),
+                                  backgroundColor: Colors.red,
+                                  ));
+                            },
+                            onSuccess: () {
+                              // TODO: fechar tela de login
+                            });
                       }
                     },
                     color: Theme.of(context).primaryColor,
