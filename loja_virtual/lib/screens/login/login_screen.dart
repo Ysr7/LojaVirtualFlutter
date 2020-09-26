@@ -14,11 +14,24 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Theme.of(context).primaryColor ,
+      backgroundColor: Theme.of(context).primaryColor,
       key: scaffoldKey,
       appBar: AppBar(
         title: const Text("Login"),
         centerTitle: true,
+        actions: <Widget>[
+          FlatButton(
+              onPressed: () {
+                Navigator.of(context).pushReplacementNamed("/signup");
+              },
+              textColor: Colors.white,
+              child: const Text(
+                "Criar Conta",
+                style: TextStyle(
+                  fontSize: 14,
+                ),
+              ))
+        ],
       ),
       body: Center(
         child: Card(
@@ -42,6 +55,9 @@ class LoginScreen extends StatelessWidget {
                         }
                         return null;
                       },
+                    ),
+                    const SizedBox(
+                      height: 16,
                     ),
                     TextFormField(
                       controller: senhaController,
@@ -72,35 +88,39 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(
                       height: 44,
                       child: RaisedButton(
-                        onPressed: userManager.loading ? null : () {
-                          if (formKey.currentState.validate()) {
-                            userManager.singIn(
-                                user: User(
-                                    email: emailController.text,
-                                    senha: senhaController.text),
-                                onFail: (e) {
-                                  scaffoldKey.currentState
-                                      .showSnackBar(SnackBar(
-                                    content: Text("Falha ao entrar: $e"),
-                                    backgroundColor: Colors.red,
-                                  ));
-                                },
-                                onSuccess: () {
-                                  // TODO: fechar tela de login
-                                });
-                          }
-                        },
+                        onPressed: userManager.loading
+                            ? null
+                            : () {
+                                if (formKey.currentState.validate()) {
+                                  userManager.singIn(
+                                      user: User(
+                                          email: emailController.text,
+                                          senha: senhaController.text),
+                                      onFail: (e) {
+                                        scaffoldKey.currentState
+                                            .showSnackBar(SnackBar(
+                                          content: Text("Falha ao entrar: $e"),
+                                          backgroundColor: Colors.red,
+                                        ));
+                                      },
+                                      onSuccess: () {
+                                        // TODO: fechar tela de login
+                                      });
+                                }
+                              },
                         color: Theme.of(context).primaryColor,
-                        disabledColor: Theme.of(context).primaryColor.withAlpha(100),
+                        disabledColor:
+                            Theme.of(context).primaryColor.withAlpha(100),
                         textColor: Colors.white,
-                        child: userManager.loading ?
-                        const CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation(Colors.white),
-                        ) :
-                        const Text(
-                          "Entrar",
-                          style: TextStyle(fontSize: 18),
-                        ),
+                        child: userManager.loading
+                            ? const CircularProgressIndicator(
+                                valueColor:
+                                    AlwaysStoppedAnimation(Colors.white),
+                              )
+                            : const Text(
+                                "Entrar",
+                                style: TextStyle(fontSize: 18),
+                              ),
                       ),
                     )
                   ],
