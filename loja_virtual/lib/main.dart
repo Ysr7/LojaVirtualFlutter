@@ -19,12 +19,13 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
             primaryColor: Colors.deepPurple,
+            scaffoldBackgroundColor: Colors.deepPurple,
             visualDensity: VisualDensity.adaptivePlatformDensity,
             appBarTheme: const AppBarTheme(elevation: 0)),
         initialRoute: "/login",
         onGenerateRoute: (settings) {
           switch (settings.name) {
-             case "/login":
+            case "/login":
               return MaterialPageRoute(builder: (_) => LoginScreen());
             case "/signup":
               return MaterialPageRoute(builder: (_) => SignupScreen());
