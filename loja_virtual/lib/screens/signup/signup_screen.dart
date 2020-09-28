@@ -30,15 +30,15 @@ class SignupScreen extends StatelessWidget {
               children: [
                 TextFormField(
                   decoration: const InputDecoration(hintText: "Nome Completo"),
-                  validator: (nome) {
-                    if (nome.isEmpty) {
+                  validator: (name) {
+                    if (name.isEmpty) {
                       return "Campo obrigatório";
-                    } else if (nome.trim().split(" ").length <= 1) {
+                    } else if (name.trim().split(" ").length <= 1) {
                       return "Preencha seu nome completo";
                     }
                     return null;
                   },
-                  onSaved: (nome) => user.nome = nome,
+                  onSaved: (name) => user.name = name,
                 ),
                 const SizedBox(
                   height: 16,
@@ -64,15 +64,15 @@ class SignupScreen extends StatelessWidget {
                   decoration: const InputDecoration(hintText: "Senha"),
                   autocorrect: false,
                   obscureText: true,
-                  validator: (senha) {
-                    if (senha.isEmpty) {
+                  validator: (pass) {
+                    if (pass.isEmpty) {
                       return "Campo obrigatório";
-                    } else if (senha.length < 6) {
+                    } else if (pass.length < 6) {
                       return "Senha deve ter mais de que 6 caracteres";
                     }
                     return null;
                   },
-                  onSaved: (senha) => user.senha = senha,
+                  onSaved: (pass) => user.pass = pass,
                 ),
                 const SizedBox(
                   height: 16,
@@ -81,17 +81,17 @@ class SignupScreen extends StatelessWidget {
                   decoration: const InputDecoration(hintText: "Repite a Senha"),
                   autocorrect: false,
                   obscureText: true,
-                  validator: (confirmaSenha) {
-                    if (confirmaSenha.isEmpty) {
+                  validator: (confirmPass) {
+                    if (confirmPass.isEmpty) {
                       return "Campo obrigatório";
-                    } else if (confirmaSenha.length < 6) {
+                    } else if (confirmPass.length < 6) {
                       return "Senha deve ter mais de que 6 caracteres";
                     }
 
                     return null;
                   },
-                  onSaved: (confirmaSenha) =>
-                      user.confirmaSenha = confirmaSenha,
+                  onSaved: (confirmPass) =>
+                      user.confirmPass = confirmPass,
                 ),
                 const SizedBox(
                   height: 16,
@@ -107,9 +107,9 @@ class SignupScreen extends StatelessWidget {
                       if (formKey.currentState.validate()) {
                         formKey.currentState.save();
 
-                        if (user.senha != user.confirmaSenha) {
-                          scaffoldKey.currentState.showSnackBar(SnackBar(
-                            content: const Text("Senhas não são iguais"),
+                        if (user.pass != user.confirmPass) {
+                          scaffoldKey.currentState.showSnackBar(const SnackBar(
+                            content: Text("Senhas não são iguais"),
                             backgroundColor: Colors.red,
                           ));
                           return;
@@ -117,7 +117,7 @@ class SignupScreen extends StatelessWidget {
                         context.read<UserManager>().signup(
                             user: user,
                             onSuccess: () {
-                              // TODO: pop
+                              Navigator.of(context).pop();
                             },
                             onFail: (e) {
                               scaffoldKey.currentState.showSnackBar(SnackBar(

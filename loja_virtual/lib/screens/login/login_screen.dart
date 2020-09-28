@@ -95,7 +95,7 @@ class LoginScreen extends StatelessWidget {
                                   userManager.singIn(
                                       user: User(
                                           email: emailController.text,
-                                          senha: senhaController.text),
+                                          pass: senhaController.text),
                                       onFail: (e) {
                                         scaffoldKey.currentState
                                             .showSnackBar(SnackBar(
@@ -104,7 +104,7 @@ class LoginScreen extends StatelessWidget {
                                         ));
                                       },
                                       onSuccess: () {
-                                        // TODO: fechar tela de login
+                                        Navigator.of(context).pop();
                                       });
                                 }
                               },
