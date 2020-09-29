@@ -10,4 +10,9 @@ class ItemSize {
   int stock;
 
   bool get hasStokc => stock > 0;
+
+  @override
+  String toString() {
+    return 'ItemSize{name: $name, price: $price, stock: $stock}';
+  }
 }

@@ -2,6 +2,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/product.dart';
+import 'components/size_widget.dart';
 
 class ProductScreem extends StatelessWidget {
   const ProductScreem(this.product);
@@ -70,6 +71,20 @@ class ProductScreem extends StatelessWidget {
                   product.description,
                   style: const TextStyle(fontSize: 16),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16, bottom: 8),
+                  child: Text(
+                    'Tamanhos',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                  ),
+                ),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: product.sizes.map((s) {
+                    return SizeWidget(size: s);
+                  }).toList(),
+                )
               ],
             ),
           ),
