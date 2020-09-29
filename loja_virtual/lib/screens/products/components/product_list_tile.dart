@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:loja_virtual/models/product.dart';
 
 class ProdutcListTile extends StatelessWidget {
-  ProdutcListTile(this.product);
+  const ProdutcListTile(this.product);
 
   final Product product;
 
@@ -40,7 +40,7 @@ class ProdutcListTile extends StatelessWidget {
                     ),
                   ),
                   const Text("R\$ 19.99",
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w800,
                         color: Colors.green,
