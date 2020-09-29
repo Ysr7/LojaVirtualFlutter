@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">34629784354-aq36lgdnb5r5c67fgnabsl031csaqj8g.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://loja-virtual-9976a.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">34629784354</string>
+    <string name="google_api_key" translatable="false">AIzaSyCQqRMcv-1F-9iYRy1CZpj4K-jcfaERwxs</string>
+    <string name="google_app_id" translatable="false">1:34629784354:android:8fdf605d865884ae6e0b7b</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCQqRMcv-1F-9iYRy1CZpj4K-jcfaERwxs</string>
+    <string name="google_storage_bucket" translatable="false">loja-virtual-9976a.appspot.com</string>
+    <string name="project_id" translatable="false">loja-virtual-9976a</string>
+</resources>
