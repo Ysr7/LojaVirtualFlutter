@@ -60,8 +60,8 @@ class ProductScreem extends StatelessWidget {
                     color: Colors.green,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16, bottom: 8),
+                const Padding(
+                  padding: EdgeInsets.only(top: 16, bottom: 8),
                   child: Text(
                     'Descrição',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
@@ -71,8 +71,8 @@ class ProductScreem extends StatelessWidget {
                   product.description,
                   style: const TextStyle(fontSize: 16),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16, bottom: 8),
+                const Padding(
+                  padding: EdgeInsets.only(top: 16, bottom: 8),
                   child: Text(
                     'Tamanhos',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
